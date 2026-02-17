@@ -88,32 +88,41 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+      {/* Animated Background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        <div className="absolute bottom-0 right-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-6000"></div>
+      </div>
+      
+      <div className="relative z-10">
+        <Navbar />
 
       {/* Hero Section */}
       <section id="home" className="py-20 md:py-32">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary font-heading text-2xl font-bold text-primary-foreground">
+            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 font-heading text-2xl font-bold text-white">
               JL
             </div>
-            <h1 className="mb-4 font-heading text-4xl font-bold text-foreground md:text-6xl">
+            <h1 className="mb-4 font-heading text-4xl font-bold text-white md:text-6xl">
               Welcome to Jample Life
             </h1>
-            <p className="mb-8 text-lg text-muted-foreground md:text-xl max-w-2xl mx-auto">
+            <p className="mb-8 text-lg text-white/80 md:text-xl max-w-2xl mx-auto">
               Transform your life with our advanced binary MLM system. Join thousands of successful entrepreneurs building their dreams with quality products and unlimited earning potential.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row justify-center">
               <a 
                 href="#get-started"
-                className="rounded-lg bg-primary px-8 py-3 text-lg font-medium text-primary-foreground hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
+                className="rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-3 text-lg font-medium text-white hover:from-purple-700 hover:to-pink-700 transition-colors flex items-center justify-center gap-2 backdrop-blur-sm border border-white/20"
               >
                 Get Started Now <ArrowRight className="h-5 w-5" />
               </a>
               <Link 
                 to="/products" 
-                className="rounded-lg border border-border bg-card px-8 py-3 text-lg font-medium text-foreground hover:bg-muted transition-colors"
+                className="rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-8 py-3 text-lg font-medium text-white hover:bg-white/20 transition-colors"
               >
                 View Products
               </Link>
@@ -123,13 +132,13 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-muted/50">
+      <section className="py-20 bg-white/5 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="mb-4 font-heading text-3xl font-bold text-foreground md:text-4xl">
+            <h2 className="mb-4 font-heading text-3xl font-bold text-white md:text-4xl">
               Why Choose Jample Life?
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
               We provide the best platform for your network marketing success
             </p>
           </div>
@@ -137,11 +146,11 @@ const Index = () => {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             {features.map((feature, index) => (
               <div key={index} className="text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-primary/10">
-                  <feature.icon className="h-8 w-8 text-primary" />
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-white/10 backdrop-blur-lg border border-white/20">
+                  <feature.icon className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="mb-2 font-heading text-lg font-semibold text-foreground">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground">{feature.description}</p>
+                <h3 className="mb-2 font-heading text-lg font-semibold text-white">{feature.title}</h3>
+                <p className="text-sm text-white/80">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -152,19 +161,19 @@ const Index = () => {
       <section id="products" className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="mb-4 font-heading text-3xl font-bold text-foreground md:text-4xl">
+            <h2 className="mb-4 font-heading text-3xl font-bold text-white md:text-4xl">
               Our Premium Products
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
               High-quality health, wellness and beauty products
             </p>
           </div>
           
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             {products.map((product, index) => (
-              <div key={index} className="group rounded-xl border border-border bg-card overflow-hidden shadow-sm hover:shadow-lg transition-all">
+              <div key={index} className="group rounded-xl border border-white/20 bg-white/10 backdrop-blur-lg overflow-hidden shadow-sm hover:shadow-lg transition-all">
                 {/* Product Image */}
-                <div className="relative aspect-square bg-muted overflow-hidden">
+                <div className="relative aspect-square bg-white/5 overflow-hidden">
                   <img 
                     src={product.image} 
                     alt={product.name}
@@ -182,20 +191,20 @@ const Index = () => {
                 
                 {/* Product Info */}
                 <div className="p-4">
-                  <h3 className="mb-2 font-heading text-lg font-semibold text-foreground text-center">{product.name}</h3>
-                  <p className="mb-3 text-sm text-muted-foreground text-center">{product.category}</p>
+                  <h3 className="mb-2 font-heading text-lg font-semibold text-white text-center">{product.name}</h3>
+                  <p className="mb-3 text-sm text-white/80 text-center">{product.category}</p>
                   
                   {/* Pricing */}
                   <div className="text-center">
-                    <p className="text-lg font-bold text-primary">{product.price}</p>
-                    <p className="text-sm text-muted-foreground line-through">{product.originalPrice}</p>
+                    <p className="text-lg font-bold text-white">{product.price}</p>
+                    <p className="text-sm text-white/60 line-through">{product.originalPrice}</p>
                   </div>
                   
                   {/* View Products Button */}
                   <div className="mt-4 text-center">
                     <Link 
                       to="/products"
-                      className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                      className="inline-flex items-center gap-1 text-sm font-medium text-white hover:text-white/80 transition-colors"
                     >
                       View All Products <ArrowRight className="h-3 w-3" />
                     </Link>
@@ -208,27 +217,27 @@ const Index = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-muted/50">
+      <section className="py-20 bg-white/5 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="mb-4 font-heading text-3xl font-bold text-foreground md:text-4xl">
+            <h2 className="mb-4 font-heading text-3xl font-bold text-white md:text-4xl">
               Success Stories
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
               Hear from our successful members
             </p>
           </div>
           
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="rounded-xl border border-border bg-card p-6 shadow-sm">
+              <div key={index} className="rounded-xl border border-white/20 bg-white/10 backdrop-blur-lg p-6 shadow-sm">
                 <div className="mb-4 flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-muted text-2xl">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-2xl">
                     {testimonial.image}
                   </div>
                   <div>
-                    <h4 className="font-semibold text-foreground">{testimonial.name}</h4>
-                    <p className="text-sm text-muted-foreground">{testimonial.rank}</p>
+                    <h4 className="font-semibold text-white">{testimonial.name}</h4>
+                    <p className="text-sm text-white/80">{testimonial.rank}</p>
                   </div>
                 </div>
                 <div className="mb-3 flex gap-1">
@@ -236,7 +245,7 @@ const Index = () => {
                     <Star key={i} className="h-4 w-4 fill-current text-yellow-500" />
                   ))}
                 </div>
-                <p className="text-sm text-muted-foreground italic">"{testimonial.content}"</p>
+                <p className="text-sm text-white/80 italic">"{testimonial.content}"</p>
               </div>
             ))}
           </div>
@@ -247,104 +256,105 @@ const Index = () => {
       <section id="contact" className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="mb-4 font-heading text-3xl font-bold text-foreground md:text-4xl">
+            <h2 className="mb-4 font-heading text-3xl font-bold text-white md:text-4xl">
               Get In Touch
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
               Ready to start your journey? Contact us today!
             </p>
           </div>
           
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                <Phone className="h-6 w-6 text-primary" />
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm border border-white/20">
+                <Phone className="h-6 w-6 text-white" />
               </div>
-              <h3 className="mb-2 font-semibold text-foreground">Phone</h3>
-              <p className="text-sm text-muted-foreground">+91 1800-123-4567</p>
+              <h3 className="mb-2 font-semibold text-white">Phone</h3>
+              <p className="text-sm text-white/80">+91 1800-123-4567</p>
             </div>
             
             <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                <Mail className="h-6 w-6 text-primary" />
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm border border-white/20">
+                <Mail className="h-6 w-6 text-white" />
               </div>
-              <h3 className="mb-2 font-semibold text-foreground">Email</h3>
-              <p className="text-sm text-muted-foreground">support@jamplelife.com</p>
+              <h3 className="mb-2 font-semibold text-white">Email</h3>
+              <p className="text-sm text-white/80">support@jamplelife.com</p>
             </div>
             
             <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                <MapPin className="h-6 w-6 text-primary" />
+              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm border border-white/20">
+                <MapPin className="h-6 w-6 text-white" />
               </div>
-              <h3 className="mb-2 font-semibold text-foreground">Office</h3>
-              <p className="text-sm text-muted-foreground">Mumbai, India</p>
+              <h3 className="mb-2 font-semibold text-white">Office</h3>
+              <p className="text-sm text-white/80">Mumbai, India</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-muted/30 py-12">
+      <footer className="border-t border-white/10 bg-white/5 backdrop-blur-md py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             <div>
               <div className="mb-4 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary font-heading text-sm font-bold text-primary-foreground">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 font-heading text-sm font-bold text-white">
                   JL
                 </div>
-                <span className="font-heading text-xl font-bold text-foreground">Jample Life</span>
+                <span className="font-heading text-xl font-bold text-white">Jample Life</span>
               </div>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-white/80">
                 Transform your life with network marketing and quality products.
               </p>
             </div>
             
             <div>
-              <h4 className="mb-4 font-semibold text-foreground">Quick Links</h4>
+              <h4 className="mb-4 font-semibold text-white">Quick Links</h4>
               <div className="space-y-2">
-                <a href="#home" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Home</a>
-                <a href="/products" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Products</a>
-                <a href="#about" className="block text-sm text-muted-foreground hover:text-primary transition-colors">About</a>
-                <a href="#contact" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Contact</a>
+                <a href="#home" className="block text-sm text-white/80 hover:text-white transition-colors">Home</a>
+                <a href="/products" className="block text-sm text-white/80 hover:text-white transition-colors">Products</a>
+                <a href="#about" className="block text-sm text-white/80 hover:text-white transition-colors">About</a>
+                <a href="#contact" className="block text-sm text-white/80 hover:text-white transition-colors">Contact</a>
               </div>
             </div>
             
             <div>
-              <h4 className="mb-4 font-semibold text-foreground">Support</h4>
+              <h4 className="mb-4 font-semibold text-white">Support</h4>
               <div className="space-y-2">
-                <a href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Help Center</a>
-                <a href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Privacy Policy</a>
-                <a href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">Terms of Service</a>
-                <a href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">FAQ</a>
+                <a href="#" className="block text-sm text-white/80 hover:text-white transition-colors">Help Center</a>
+                <a href="#" className="block text-sm text-white/80 hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" className="block text-sm text-white/80 hover:text-white transition-colors">Terms of Service</a>
+                <a href="#" className="block text-sm text-white/80 hover:text-white transition-colors">FAQ</a>
               </div>
             </div>
             
             <div>
-              <h4 className="mb-4 font-semibold text-foreground">Follow Us</h4>
+              <h4 className="mb-4 font-semibold text-white">Follow Us</h4>
               <div className="flex gap-3">
-                <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-colors">
+                <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white/80 hover:text-white transition-colors border border-white/20">
                   <Facebook className="h-5 w-5" />
                 </a>
-                <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-colors">
+                <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white/80 hover:text-white transition-colors border border-white/20">
                   <Twitter className="h-5 w-5" />
                 </a>
-                <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-colors">
+                <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white/80 hover:text-white transition-colors border border-white/20">
                   <Instagram className="h-5 w-5" />
                 </a>
-                <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-colors">
+                <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white/80 hover:text-white transition-colors border border-white/20">
                   <Youtube className="h-5 w-5" />
                 </a>
               </div>
             </div>
           </div>
           
-          <div className="mt-8 border-t border-border pt-8 text-center">
-            <p className="text-sm text-muted-foreground">
+          <div className="mt-8 border-t border-white/10 pt-8 text-center">
+            <p className="text-sm text-white/60">
               © 2026 Jample Life. All rights reserved.
             </p>
           </div>
         </div>
       </footer>
+      </div>
     </div>
   );
 };
