@@ -21,9 +21,11 @@ const Navbar = () => {
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center gap-3">
               <Link to="/" className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 font-heading text-sm font-bold text-white">
-                  JL
-                </div>
+                <img 
+                  src="/Logo.jpg" 
+                  alt="Jample Life Logo" 
+                  className="h-10 w-10 rounded-xl object-cover border border-white/20"
+                />
                 <span className="font-heading text-xl font-bold text-white">Jample Life</span>
               </Link>
             </div>

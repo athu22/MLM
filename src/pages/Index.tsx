@@ -4,6 +4,7 @@ import { Users, Shield, ArrowRight, X, Menu, Phone, Mail, MapPin, Facebook, Twit
 import Navbar from "../components/Navbar";
 
 const Index = () => {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   const features = [
     {
@@ -104,8 +105,12 @@ const Index = () => {
       <section id="home" className="py-20 md:py-32">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 font-heading text-2xl font-bold text-white">
-              JL
+            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl overflow-hidden border border-white/20">
+              <img 
+                src="/Logo.jpg" 
+                alt="Jample Life Logo" 
+                className="h-full w-full object-cover"
+              />
             </div>
             <h1 className="mb-4 font-heading text-4xl font-bold text-white md:text-6xl">
               Welcome to Jample Life
@@ -114,12 +119,12 @@ const Index = () => {
               Transform your life with our advanced binary MLM system. Join thousands of successful entrepreneurs building their dreams with quality products and unlimited earning potential.
             </p>
             <div className="flex flex-col gap-4 sm:flex-row justify-center">
-              <a 
-                href="#get-started"
+              <button 
+                onClick={() => setIsLoginModalOpen(true)}
                 className="rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-3 text-lg font-medium text-white hover:from-purple-700 hover:to-pink-700 transition-colors flex items-center justify-center gap-2 backdrop-blur-sm border border-white/20"
               >
                 Get Started Now <ArrowRight className="h-5 w-5" />
-              </a>
+              </button>
               <Link 
                 to="/products" 
                 className="rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-8 py-3 text-lg font-medium text-white hover:bg-white/20 transition-colors"
@@ -298,9 +303,11 @@ const Index = () => {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             <div>
               <div className="mb-4 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 font-heading text-sm font-bold text-white">
-                  JL
-                </div>
+                <img 
+                  src="/Logo.jpg" 
+                  alt="Jample Life Logo" 
+                  className="h-10 w-10 rounded-lg object-cover border border-white/20"
+                />
                 <span className="font-heading text-xl font-bold text-white">Jample Life</span>
               </div>
               <p className="text-sm text-white/80">
@@ -355,6 +362,59 @@ const Index = () => {
         </div>
       </footer>
       </div>
+      
+      {/* Login Modal */}
+      {isLoginModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4" onClick={() => setIsLoginModalOpen(false)}>
+          <div className="w-full max-w-4xl rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-2xl p-6" onClick={(e) => e.stopPropagation()}>
+            <div className="mb-6 flex items-center justify-between">
+              <h3 className="font-heading text-2xl font-bold text-white">Choose Login Type</h3>
+              <button 
+                onClick={() => setIsLoginModalOpen(false)}
+                className="rounded-lg p-2 text-white/80 hover:text-white transition-colors"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+              <Link 
+                to="/member/login"
+                onClick={() => setIsLoginModalOpen(false)}
+                className="group block rounded-xl border border-white/20 bg-white/10 backdrop-blur-lg p-6 shadow-sm transition-all hover:border-purple-500 hover:shadow-md"
+              >
+                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/20">
+                  <svg className="h-8 w-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                  </svg>
+                </div>
+                <h4 className="mb-2 font-heading text-lg font-semibold text-white">Member Login</h4>
+                <p className="mb-4 text-sm text-white/80">Access your dashboard, income & binary tree</p>
+                <div className="inline-flex items-center gap-1 text-sm font-medium text-purple-400">
+                  Sign In <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </div>
+              </Link>
+              
+              <Link 
+                to="/admin/login"
+                onClick={() => setIsLoginModalOpen(false)}
+                className="group block rounded-xl border border-white/20 bg-white/10 backdrop-blur-lg p-6 shadow-sm transition-all hover:border-pink-500 hover:shadow-md"
+              >
+                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-pink-500/20">
+                  <svg className="h-8 w-8 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                  </svg>
+                </div>
+                <h4 className="mb-2 font-heading text-lg font-semibold text-white">Admin Panel</h4>
+                <p className="mb-4 text-sm text-white/80">Manage users, income, EMI & reports</p>
+                <div className="inline-flex items-center gap-1 text-sm font-medium text-pink-400">
+                  Admin Login <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

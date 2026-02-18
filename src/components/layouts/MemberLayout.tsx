@@ -37,9 +37,11 @@ const MemberLayout = ({ children }: MemberLayoutProps) => {
       {/* Sidebar */}
       <aside className="sidebar-nav fixed left-0 top-0 z-30 flex h-full w-64 flex-col">
         <div className="flex h-16 items-center gap-3 border-b border-sidebar-border px-6">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary font-heading text-sm font-bold text-primary-foreground">
-            JL
-          </div>
+          <img 
+            src="/Logo.jpg" 
+            alt="Jample Life Logo" 
+            className="h-9 w-9 rounded-lg object-cover border border-white/20"
+          />
           <span className="font-heading text-lg font-bold text-white">
             Jample Life
           </span>

@@ -159,9 +159,11 @@ const Register = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary font-heading text-lg font-bold text-primary-foreground shadow-lg group-hover:shadow-xl transition-all duration-300">
-                JL
-              </div>
+              <img 
+                src="/Logo.jpg" 
+                alt="Jample Life Logo" 
+                className="h-10 w-10 rounded-xl object-cover border border-white/20 shadow-lg group-hover:shadow-xl transition-all duration-300"
+              />
               <span className="font-heading text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
                 Jample Life
               </span>

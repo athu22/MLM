@@ -19,8 +19,12 @@ const AdminLogin = () => {
     <div className="flex min-h-screen items-center justify-center" style={{ background: "linear-gradient(135deg, hsl(220 50% 25%), hsl(250 40% 20%))" }}>
       <div className="w-full max-w-md">
         <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary font-heading text-xl font-bold text-primary-foreground">
-            JL
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl overflow-hidden border border-white/20">
+            <img 
+              src="/Logo.jpg" 
+              alt="Jample Life Logo" 
+              className="h-full w-full object-cover"
+            />
           </div>
           <h1 className="font-heading text-2xl font-bold text-white">Welcome Admin</h1>
           <p className="text-sm text-white/60">Sign in with credentials</p>
