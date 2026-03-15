@@ -188,12 +188,12 @@ const AdminProducts = () => {
 
         {/* Products List */}
         <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
-          <div className="mb-4 flex items-center justify-between">
+          <div className="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <h3 className="flex items-center gap-2 font-heading text-base font-semibold text-foreground">
               <Package className="h-5 w-5 text-primary" />
               Products Inventory
             </h3>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <button className="rounded-lg bg-primary px-3 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90">
                 <Plus className="mr-2 h-4 w-4 inline" />
                 Add Product

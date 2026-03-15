@@ -1,420 +1,388 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Users, Shield, ArrowRight, X, Menu, Phone, Mail, MapPin, Facebook, Twitter, Instagram, Youtube, Star, TrendingUp, Award, Package } from "lucide-react";
+import { 
+  Users, Shield, ArrowRight, X, Phone, Mail, MapPin, 
+  Facebook, Twitter, Instagram, Youtube, Star, TrendingUp, 
+  Award, Package, CheckCircle, Globe, Play, ChevronRight,
+  Zap, BarChart
+} from "lucide-react";
 import Navbar from "../components/Navbar";
 
 const Index = () => {
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const stats = [
+    { value: "50K+", label: "Active Members" },
+    { value: "₹15Cr+", label: "Total Payouts" },
+    { value: "120+", label: "Premium Products" },
+    { value: "24/7", label: "Dedicated Support" },
+  ];
 
   const features = [
     {
       icon: TrendingUp,
-      title: "Binary MLM System",
-      description: "Advanced binary compensation plan with unlimited earning potential"
+      title: "Powerful Binary Matrix",
+      description: "Our advanced algorithm ensures optimal placement and maximum team-building efficiency for unlimited earning potential.",
+      color: "from-blue-500 to-cyan-400"
     },
     {
       icon: Award,
-      title: "Rank & Rewards",
-      description: "Multiple rank levels with attractive salary and benefits"
+      title: "Prestigious Ranks",
+      description: "Climb the ladder of success from Executive to Diamond. Unlock exclusive bonuses, luxury tours, and fixed royalty incomes.",
+      color: "from-purple-500 to-pink-500"
     },
     {
       icon: Package,
-      title: "Quality Products",
-      description: "Premium health, wellness and beauty products"
+      title: "World-Class Products",
+      description: "Market-tested health, wellness, and lifestyle products that ensure high retention and continuous repurchases.",
+      color: "from-orange-500 to-yellow-400"
     },
     {
-      icon: Users,
-      title: "Team Support",
-      description: "Comprehensive training and 24/7 support system"
-    }
-  ];
-
-  const testimonials = [
-    {
-      name: "Rahul Sharma",
-      rank: "Post Stockist",
-      content: "Jample Life has transformed my life. The binary system and quality products helped me achieve financial freedom.",
-      rating: 5,
-      image: "👨‍💼"
-    },
-    {
-      name: "Priya Patel",
-      rank: "Gold Stockist", 
-      content: "Excellent support system and amazing products. I'm proud to be part of this growing family.",
-      rating: 5,
-      image: "👩‍💼"
-    },
-    {
-      name: "Amit Kumar",
-      rank: "Silver Stockist",
-      content: "The training and mentorship helped me build a successful network. Highly recommended!",
-      rating: 5,
-      image: "👨‍💻"
+      icon: Zap,
+      title: "Instant Payouts",
+      description: "Experience lightning-fast daily and weekly withdrawals directly to your bank account with zero hidden charges.",
+      color: "from-emerald-500 to-teal-400"
     }
   ];
 
   const products = [
     { 
-      name: "Smart Watch Pro", 
-      price: "₹8,999", 
-      category: "Electronics", 
-      image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=300",
-      originalPrice: "₹12,999",
-      discount: "31% OFF"
+      name: "Bio-Active Supplement", 
+      price: "₹2,499", 
+      category: "Health & Nutrition", 
+      image: "https://images.unsplash.com/photo-1577401239170-897942555fb3?q=80&w=600&auto=format&fit=crop",
+      originalPrice: "₹3,999",
+      rating: 4.9,
+      reviews: 1240
     },
     { 
-      name: "Premium Perfume Set", 
-      price: "₹2,999", 
-      category: "Beauty", 
-      image: "https://images.unsplash.com/photo-15946318931b8b5a760511846?w=300",
-      originalPrice: "₹4,999",
-      discount: "40% OFF"
+      name: "Premium Skincare Kit", 
+      price: "₹4,199", 
+      category: "Beauty & Wellness", 
+      image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=600&auto=format&fit=crop",
+      originalPrice: "₹5,499",
+      rating: 4.8,
+      reviews: 856
     },
     { 
-      name: "Loreal Paris Skincare", 
+      name: "Immunity Booster Pack", 
       price: "₹1,899", 
-      category: "Beauty", 
-      image: "https://images.unsplash.com/photo-1596462502278-27d035a59034?w=300",
-      originalPrice: "₹2,999",
-      discount: "37% OFF"
+      category: "Health & Nutrition", 
+      image: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?q=80&w=600&auto=format&fit=crop",
+      originalPrice: "₹2,499",
+      rating: 4.7,
+      reviews: 532
     },
     { 
-      name: "Wireless Earbuds", 
+      name: "Smart Fitness Watch", 
       price: "₹3,499", 
-      category: "Electronics", 
-      image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300",
+      category: "Lifestyle Tech", 
+      image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?q=80&w=600&auto=format&fit=crop",
       originalPrice: "₹5,999",
-      discount: "42% OFF"
+      rating: 4.6,
+      reviews: 945
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
-        <div className="absolute bottom-0 right-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-6000"></div>
-      </div>
+    <div className="min-h-screen bg-[#0A0D14] text-white selection:bg-primary/30 selection:text-white font-sans overflow-x-hidden">
       
-      <div className="relative z-10">
+      {/* Dynamic Background */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-600/20 rounded-full blur-[120px] mix-blend-screen animate-blob"></div>
+        <div className="absolute top-[20%] right-[-10%] w-[30%] h-[40%] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-[-20%] left-[20%] w-[50%] h-[50%] bg-pink-600/10 rounded-full blur-[150px] mix-blend-screen animate-blob animation-delay-4000"></div>
+      </div>
+
+      <div className="relative z-10 flex flex-col min-h-screen">
         <Navbar />
 
-      {/* Hero Section */}
-      <section id="home" className="py-20 md:py-32">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl overflow-hidden border border-white/20">
-              <img 
-                src="/Logo.jpg" 
-                alt="Jample Life Logo" 
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <h1 className="mb-4 font-heading text-4xl font-bold text-white md:text-6xl">
-              Welcome to Jample Life
-            </h1>
-            <p className="mb-8 text-lg text-white/80 md:text-xl max-w-2xl mx-auto">
-              Transform your life with our advanced binary MLM system. Join thousands of successful entrepreneurs building their dreams with quality products and unlimited earning potential.
-            </p>
-            <div className="flex flex-col gap-4 sm:flex-row justify-center">
-              <button 
-                onClick={() => setIsLoginModalOpen(true)}
-                className="rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-3 text-lg font-medium text-white hover:from-purple-700 hover:to-pink-700 transition-colors flex items-center justify-center gap-2 backdrop-blur-sm border border-white/20"
-              >
-                Get Started Now <ArrowRight className="h-5 w-5" />
-              </button>
-              <Link 
-                to="/products" 
-                className="rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm px-8 py-3 text-lg font-medium text-white hover:bg-white/20 transition-colors"
-              >
-                View Products
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20 bg-white/5 backdrop-blur-sm">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="mb-4 font-heading text-3xl font-bold text-white md:text-4xl">
-              Why Choose Jample Life?
-            </h2>
-            <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              We provide the best platform for your network marketing success
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {features.map((feature, index) => (
-              <div key={index} className="text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-white/10 backdrop-blur-lg border border-white/20">
-                  <feature.icon className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="mb-2 font-heading text-lg font-semibold text-white">{feature.title}</h3>
-                <p className="text-sm text-white/80">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Products Section */}
-      <section id="products" className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="mb-4 font-heading text-3xl font-bold text-white md:text-4xl">
-              Our Premium Products
-            </h2>
-            <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              High-quality health, wellness and beauty products
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {products.map((product, index) => (
-              <div key={index} className="group rounded-xl border border-white/20 bg-white/10 backdrop-blur-lg overflow-hidden shadow-sm hover:shadow-lg transition-all">
-                {/* Product Image */}
-                <div className="relative aspect-square bg-white/5 overflow-hidden">
-                  <img 
-                    src={product.image} 
-                    alt={product.name}
-                    className="h-full w-full object-cover transition-transform group-hover:scale-105"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300'; // fallback image
-                    }}
-                  />
-                  {/* Discount Badge */}
-                  <div className="absolute top-2 right-2 rounded-full bg-red-500 px-2 py-1 text-xs font-medium text-white">
-                    {product.discount}
-                  </div>
+        {/* Hero Section */}
+        <section className="relative pt-24 pb-20 lg:pt-36 lg:pb-32 overflow-hidden">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+              
+              {/* Hero Content */}
+              <div className="max-w-3xl">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-md">
+                  <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span className="text-xs font-semibold tracking-wide text-white/80 uppercase">The Future of Direct Selling</span>
                 </div>
                 
-                {/* Product Info */}
-                <div className="p-4">
-                  <h3 className="mb-2 font-heading text-lg font-semibold text-white text-center">{product.name}</h3>
-                  <p className="mb-3 text-sm text-white/80 text-center">{product.category}</p>
-                  
-                  {/* Pricing */}
-                  <div className="text-center">
-                    <p className="text-lg font-bold text-white">{product.price}</p>
-                    <p className="text-sm text-white/60 line-through">{product.originalPrice}</p>
+                <h1 className="font-heading text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-6">
+                  Build Your Empire With <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400">Jample Life</span>
+                </h1>
+                
+                <p className="text-lg lg:text-xl text-white/60 mb-10 max-w-2xl leading-relaxed">
+                  Join India's fastest-growing network marketing platform. Experience a revolutionary binary compensation plan designed to maximize your earning potential and secure your financial future.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link 
+                    to="/member/login"
+                    className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#0A0D14] font-bold text-lg rounded-full overflow-hidden transition-transform hover:scale-105"
+                  >
+                    <span className="relative z-10 flex items-center gap-2">
+                      Start Earning Now <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </Link>
+                  <Link 
+                    to="/company/business-plan" 
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold text-lg rounded-full backdrop-blur-md transition-all"
+                  >
+                    <Play className="h-5 w-5 fill-current opacity-80" /> Watch Presentation
+                  </Link>
+                </div>
+                
+                <div className="mt-12 flex items-center gap-6 text-sm text-white/50 font-medium">
+                  <div className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-400" /> ISO Certified</div>
+                  <div className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-400" /> 100% Legal & Safe</div>
+                  <div className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-400" /> Daily ROI</div>
+                </div>
+              </div>
+
+              {/* Hero Image/Graphic */}
+              <div className="relative hidden lg:block">
+                <div className="relative w-full aspect-square max-w-lg mx-auto">
+                  {/* Decorative Elements */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 to-pink-500/20 rounded-[3rem] rotate-6 backdrop-blur-3xl border border-white/10"></div>
+                  <div className="absolute inset-0 bg-[#131620] rounded-[3rem] -rotate-3 overflow-hidden border border-white/10 shadow-2xl flex flex-col">
+                    {/* Mock Dashboard UI inside the graphic */}
+                    <div className="h-12 border-b border-white/5 flex items-center px-6 gap-2 bg-gradient-to-r from-white/5 to-transparent">
+                      <div className="flex gap-1.5">
+                        <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                        <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                        <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                      </div>
+                    </div>
+                    <div className="p-6 flex-1 flex flex-col gap-4">
+                      <div className="flex justify-between items-end">
+                        <div>
+                          <p className="text-white/40 text-xs font-medium mb-1">Total Income</p>
+                          <h3 className="text-3xl font-bold font-heading text-emerald-400">₹2,45,800</h3>
+                        </div>
+                        <div className="px-2 py-1 bg-emerald-500/20 text-emerald-400 rounded text-xs font-bold">+14.5%</div>
+                      </div>
+                      
+                      {/* Fake Chart */}
+                      <div className="h-32 mt-4 flex items-end gap-2 px-2">
+                        {[40, 65, 45, 80, 55, 90, 75, 100].map((h, i) => (
+                          <div key={i} className="flex-1 bg-gradient-to-t from-purple-500/50 to-pink-500 rounded-t-sm" style={{ height: `${h}%` }}></div>
+                        ))}
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-3 mt-auto">
+                        <div className="bg-white/5 p-3 rounded-xl border border-white/5">
+                          <p className="text-white/40 text-[10px] uppercase font-bold tracking-wider mb-1">Direct Team</p>
+                          <p className="text-xl font-bold text-white">124</p>
+                        </div>
+                        <div className="bg-white/5 p-3 rounded-xl border border-white/5">
+                          <p className="text-white/40 text-[10px] uppercase font-bold tracking-wider mb-1">Left PV / Right PV</p>
+                          <p className="text-xl font-bold text-white">45K / 42K</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   
-                  {/* View Products Button */}
-                  <div className="mt-4 text-center">
-                    <Link 
-                      to="/products"
-                      className="inline-flex items-center gap-1 text-sm font-medium text-white hover:text-white/80 transition-colors"
-                    >
-                      View All Products <ArrowRight className="h-3 w-3" />
-                    </Link>
+                  {/* Floating badges */}
+                  <div className="absolute -right-6 top-1/4 bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-2xl shadow-xl animate-bounce" style={{ animationDuration: '3s' }}>
+                    <div className="flex items-center gap-3">
+                      <div className="bg-emerald-500/20 p-2 rounded-full"><Award className="h-6 w-6 text-emerald-400" /></div>
+                      <div>
+                        <p className="text-xs text-white/60 font-medium">New Rank Achieved</p>
+                        <p className="text-sm font-bold text-white">Diamond Director</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 bg-white/5 backdrop-blur-sm">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="mb-4 font-heading text-3xl font-bold text-white md:text-4xl">
-              Success Stories
-            </h2>
-            <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              Hear from our successful members
-            </p>
+        {/* Stats Section */}
+        <section className="py-10 border-y border-white/5 bg-white/[0.02]">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/5">
+              {stats.map((stat, i) => (
+                <div key={i} className="text-center px-4">
+                  <h3 className="text-3xl md:text-4xl font-black font-heading tracking-tight text-white mb-2">{stat.value}</h3>
+                  <p className="text-sm font-medium text-white/50 uppercase tracking-widest">{stat.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="rounded-xl border border-white/20 bg-white/10 backdrop-blur-lg p-6 shadow-sm">
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20 text-2xl">
-                    {testimonial.image}
+        </section>
+
+        {/* Features / Why Choose Us */}
+        <section className="py-24 relative">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-sm font-bold tracking-widest text-purple-400 uppercase mb-3">Why Choose Us</h2>
+              <h3 className="font-heading text-4xl md:text-5xl font-bold mb-6">Built For Your Success</h3>
+              <p className="text-lg text-white/60 leading-relaxed">We provide a robust infrastructure, high-converting products, and a lucrative compensation plan that rewards your hard work immediately.</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {features.map((feature, i) => (
+                <div key={i} className="bg-white/[0.03] border border-white/10 p-8 rounded-3xl hover:bg-white/[0.05] transition-colors relative overflow-hidden group">
+                  <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br \${feature.color} opacity-20 blur-3xl group-hover:opacity-40 transition-opacity`}></div>
+                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br \${feature.color} p-[1px] mb-6 shadow-lg`}>
+                    <div className="w-full h-full bg-[#131620] rounded-[15px] flex items-center justify-center">
+                      <feature.icon className="h-6 w-6 text-white" />
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-white">{testimonial.name}</h4>
-                    <p className="text-sm text-white/80">{testimonial.rank}</p>
+                  <h4 className="text-xl font-bold font-heading mb-3 text-white group-hover:text-purple-300 transition-colors">{feature.title}</h4>
+                  <p className="text-sm text-white/60 leading-relaxed">{feature.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Products Showcase */}
+        <section id="products" className="py-24 bg-[#131620] relative border-y border-white/5">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+              <div className="max-w-2xl">
+                <h2 className="text-sm font-bold tracking-widest text-pink-400 uppercase mb-3">Premium Shop</h2>
+                <h3 className="font-heading text-4xl md:text-5xl font-bold mb-4">Trending Products</h3>
+                <p className="text-white/60 text-lg">High-quality lifestyle and health products designed for repeat purchases and massive retail profits.</p>
+              </div>
+              <Link to="/products" className="inline-flex items-center gap-2 text-white font-semibold hover:text-pink-400 transition-colors shrink-0">
+                Explore Full Catalog <ArrowRight className="h-5 w-5" />
+              </Link>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {products.map((product, i) => (
+                <div key={i} className="group bg-white/[0.02] border border-white/10 rounded-2xl overflow-hidden hover:border-pink-500/30 transition-all flex flex-col">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-white/5 p-4">
+                    <img 
+                      src={product.image} 
+                      alt={product.name}
+                      className="w-full h-full object-cover rounded-xl transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute top-6 right-6 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-white border border-white/10 flex items-center gap-1">
+                      <Star className="h-3 w-3 fill-yellow-500 text-yellow-500" /> {product.rating}
+                    </div>
+                  </div>
+                  <div className="p-6 flex-1 flex flex-col">
+                    <p className="text-xs font-bold uppercase tracking-wider text-pink-400 mb-2">{product.category}</p>
+                    <h4 className="text-lg font-bold text-white leading-tight mb-4">{product.name}</h4>
+                    <div className="mt-auto flex items-end justify-between">
+                      <div>
+                        <p className="text-2xl font-black text-white">{product.price}</p>
+                        <p className="text-sm text-white/40 line-through">{product.originalPrice}</p>
+                      </div>
+                      <button className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-pink-500 transition-colors">
+                        <ArrowRight className="h-4 w-4 text-white" />
+                      </button>
+                    </div>
                   </div>
                 </div>
-                <div className="mb-3 flex gap-1">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-current text-yellow-500" />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-24 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 to-transparent"></div>
+          <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
+            <div className="max-w-4xl mx-auto bg-gradient-to-br from-purple-600 to-pink-600 rounded-[3rem] p-12 lg:p-20 relative overflow-hidden border border-white/20 shadow-2xl">
+              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"></div>
+              
+              <h2 className="font-heading text-4xl lg:text-5xl font-bold text-white mb-6 relative z-10">Start Your Success Journey Today</h2>
+              <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto relative z-10">Take the first step towards financial freedom. Join our growing community of achievers and leaders.</p>
+              
+              <div className="flex flex-wrap justify-center gap-4 relative z-10">
+                <Link to="/register" className="px-8 py-4 bg-white text-purple-700 font-bold rounded-full hover:shadow-xl hover:scale-105 transition-all text-lg flex items-center gap-2">
+                  Create Free Account <ArrowRight className="h-5 w-5" />
+                </Link>
+                <Link to="/company/compensation" className="px-8 py-4 bg-black/20 backdrop-blur-md text-white border border-white/30 font-bold rounded-full hover:bg-black/30 transition-all text-lg">
+                  View Business Plan
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="bg-[#05070A] border-t border-white/5 pt-20 pb-10 mt-auto">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+              
+              <div className="lg:col-span-2">
+                <Link to="/" className="flex items-center gap-3 mb-6">
+                  <img src="/Logo.jpg" alt="Logo" className="h-12 w-12 rounded-xl border border-white/10" />
+                  <span className="font-heading text-2xl font-black text-white tracking-tight">Jample Life</span>
+                </Link>
+                <p className="text-white/50 leading-relaxed max-w-sm mb-8">
+                  Empowering individuals globally through state-of-the-art direct selling models, premium health products, and unmatched support systems.
+                </p>
+                <div className="flex gap-4">
+                  {[Facebook, Twitter, Instagram, Youtube].map((Icon, i) => (
+                    <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-white/10 hover:text-white transition-colors border border-white/5">
+                      <Icon className="h-4 w-4" />
+                    </a>
                   ))}
                 </div>
-                <p className="text-sm text-white/80 italic">"{testimonial.content}"</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="mb-4 font-heading text-3xl font-bold text-white md:text-4xl">
-              Get In Touch
-            </h2>
-            <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              Ready to start your journey? Contact us today!
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm border border-white/20">
-                <Phone className="h-6 w-6 text-white" />
+              <div>
+                <h4 className="text-white font-bold mb-6 tracking-wide">Company</h4>
+                <ul className="space-y-4">
+                  <li><Link to="/company/about-us" className="text-white/50 hover:text-white transition-colors">About Us</Link></li>
+                  <li><Link to="/company/vision" className="text-white/50 hover:text-white transition-colors">Our Vision</Link></li>
+                  <li><Link to="/company/management" className="text-white/50 hover:text-white transition-colors">Management</Link></li>
+                  <li><Link to="/company/legal" className="text-white/50 hover:text-white transition-colors">Legal Documents</Link></li>
+                </ul>
               </div>
-              <h3 className="mb-2 font-semibold text-white">Phone</h3>
-              <p className="text-sm text-white/80">+91 1800-123-4567</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm border border-white/20">
-                <Mail className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="mb-2 font-semibold text-white">Email</h3>
-              <p className="text-sm text-white/80">support@jamplelife.com</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm border border-white/20">
-                <MapPin className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="mb-2 font-semibold text-white">Office</h3>
-              <p className="text-sm text-white/80">Mumbai, India</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="border-t border-white/10 bg-white/5 backdrop-blur-md py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-            <div>
-              <div className="mb-4 flex items-center gap-3">
-                <img 
-                  src="/Logo.jpg" 
-                  alt="Jample Life Logo" 
-                  className="h-10 w-10 rounded-lg object-cover border border-white/20"
-                />
-                <span className="font-heading text-xl font-bold text-white">Jample Life</span>
+              <div>
+                <h4 className="text-white font-bold mb-6 tracking-wide">Opportunities</h4>
+                <ul className="space-y-4">
+                  <li><Link to="/opportunities/business-plan" className="text-white/50 hover:text-white transition-colors">Business Plan</Link></li>
+                  <li><Link to="/opportunities/compensation" className="text-white/50 hover:text-white transition-colors">Compensation</Link></li>
+                  <li><Link to="/opportunities/ranks-rewards" className="text-white/50 hover:text-white transition-colors">Ranks & Rewards</Link></li>
+                  <li><Link to="/products" className="text-white/50 hover:text-white transition-colors">Product Catalog</Link></li>
+                </ul>
               </div>
-              <p className="text-sm text-white/80">
-                Transform your life with network marketing and quality products.
-              </p>
+
+              <div>
+                <h4 className="text-white font-bold mb-6 tracking-wide">Contact Us</h4>
+                <ul className="space-y-4">
+                  <li className="flex gap-3 text-white/50"><MapPin className="h-5 w-5 shrink-0 text-white/30" /> <span>Cyber City, Andheri East, Mumbai, India 400093</span></li>
+                  <li className="flex gap-3 text-white/50"><Phone className="h-5 w-5 shrink-0 text-white/30" /> <span>+91 1800-123-4567</span></li>
+                  <li className="flex gap-3 text-white/50"><Mail className="h-5 w-5 shrink-0 text-white/30" /> <span>support@jamplelife.com</span></li>
+                </ul>
+              </div>
+
             </div>
             
-            <div>
-              <h4 className="mb-4 font-semibold text-white">Quick Links</h4>
-              <div className="space-y-2">
-                <a href="#home" className="block text-sm text-white/80 hover:text-white transition-colors">Home</a>
-                <a href="/products" className="block text-sm text-white/80 hover:text-white transition-colors">Products</a>
-                <a href="#about" className="block text-sm text-white/80 hover:text-white transition-colors">About</a>
-                <a href="#contact" className="block text-sm text-white/80 hover:text-white transition-colors">Contact</a>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="mb-4 font-semibold text-white">Support</h4>
-              <div className="space-y-2">
-                <a href="#" className="block text-sm text-white/80 hover:text-white transition-colors">Help Center</a>
-                <a href="#" className="block text-sm text-white/80 hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" className="block text-sm text-white/80 hover:text-white transition-colors">Terms of Service</a>
-                <a href="#" className="block text-sm text-white/80 hover:text-white transition-colors">FAQ</a>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="mb-4 font-semibold text-white">Follow Us</h4>
-              <div className="flex gap-3">
-                <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white/80 hover:text-white transition-colors border border-white/20">
-                  <Facebook className="h-5 w-5" />
-                </a>
-                <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white/80 hover:text-white transition-colors border border-white/20">
-                  <Twitter className="h-5 w-5" />
-                </a>
-                <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white/80 hover:text-white transition-colors border border-white/20">
-                  <Instagram className="h-5 w-5" />
-                </a>
-                <a href="#" className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white/80 hover:text-white transition-colors border border-white/20">
-                  <Youtube className="h-5 w-5" />
-                </a>
+            <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40">
+              <p>© 2026 Jample Life. All rights reserved.</p>
+              <div className="flex gap-6">
+                <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+                <a href="#" className="hover:text-white transition-colors">Refund Policy</a>
               </div>
             </div>
           </div>
-          
-          <div className="mt-8 border-t border-white/10 pt-8 text-center">
-            <p className="text-sm text-white/60">
-              © 2026 Jample Life. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+        </footer>
       </div>
-      
-      {/* Login Modal */}
-      {isLoginModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4" onClick={() => setIsLoginModalOpen(false)}>
-          <div className="w-full max-w-4xl rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-2xl p-6" onClick={(e) => e.stopPropagation()}>
-            <div className="mb-6 flex items-center justify-between">
-              <h3 className="font-heading text-2xl font-bold text-white">Choose Login Type</h3>
-              <button 
-                onClick={() => setIsLoginModalOpen(false)}
-                className="rounded-lg p-2 text-white/80 hover:text-white transition-colors"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-              <Link 
-                to="/member/login"
-                onClick={() => setIsLoginModalOpen(false)}
-                className="group block rounded-xl border border-white/20 bg-white/10 backdrop-blur-lg p-6 shadow-sm transition-all hover:border-purple-500 hover:shadow-md"
-              >
-                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/20">
-                  <svg className="h-8 w-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                  </svg>
-                </div>
-                <h4 className="mb-2 font-heading text-lg font-semibold text-white">Member Login</h4>
-                <p className="mb-4 text-sm text-white/80">Access your dashboard, income & binary tree</p>
-                <div className="inline-flex items-center gap-1 text-sm font-medium text-purple-400">
-                  Sign In <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </div>
-              </Link>
-              
-              <Link 
-                to="/admin/login"
-                onClick={() => setIsLoginModalOpen(false)}
-                className="group block rounded-xl border border-white/20 bg-white/10 backdrop-blur-lg p-6 shadow-sm transition-all hover:border-pink-500 hover:shadow-md"
-              >
-                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-pink-500/20">
-                  <svg className="h-8 w-8 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                  </svg>
-                </div>
-                <h4 className="mb-2 font-heading text-lg font-semibold text-white">Admin Panel</h4>
-                <p className="mb-4 text-sm text-white/80">Manage users, income, EMI & reports</p>
-                <div className="inline-flex items-center gap-1 text-sm font-medium text-pink-400">
-                  Admin Login <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </div>
-              </Link>
-            </div>
-          </div>
-        </div>
-      )}
+
+
     </div>
   );
 };
